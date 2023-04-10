@@ -1,0 +1,26 @@
+class Rate {
+private:
+  int value;
+  Date date;
+public:
+  Rate(int value, Date date) {
+    this->value = value;
+    this->date = date;
+  }
+
+  int getValue() {
+    return value;
+  }
+
+  Date getDate() {
+    return date;
+  }
+
+  void setValue(int value) {
+    this->value = value;
+  }
+
+  void setDate(Date date) {
+    this->date = date;
+  }
+};
