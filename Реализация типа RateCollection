@@ -1,0 +1,26 @@
+class RateCollection {
+private:
+  vector<Rate> rates;
+public:
+  RateCollection() {}
+
+  void addRate(Rate rate) {
+    rates.push_back(rate);
+  }
+
+  void changeRate(int index, Rate rate) {
+    rates[index] = rate;
+  }
+
+  void deleteRate(int index) {
+    rates.erase(rates.begin() + index);
+  }
+
+  vector<Rate> getRates() {
+    return rates;
+  }
+
+  void setRates(vector<Rate> rates) {
+    this->rates = rates;
+  }
+};
