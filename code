@@ -1,0 +1,248 @@
+#include <iostream>
+#include <cstring>
+
+class Date {
+private:
+    int day;
+    int month;
+    int year;
+
+public:
+    // Конструктор
+    Date(int day, int month, int year)
+    {
+        this->day = day;
+        this->month = month;
+        this->year = year;
+    }
+
+    // Геттеры и сеттеры
+    int getDay() const { return day; }
+    void setDay(int day) { this->day = day; }
+
+    int getMonth() const { return month; }
+    void setMonth(int month) { this->month = month; }
+
+    int getYear() const { return year; }
+    void setYear(int year) { this->year = year; }
+
+    // Метод для вывода даты
+    void printDate() const
+    {
+        std::cout << day << "." << month << "." << year;
+    }
+};
+
+class RateCollection {
+private:
+    static const int MAX_RATES = 10; // Максимальное количество оценок
+    int rates[MAX_RATES]; // Массив оценок
+    int count; // Количество оценок
+
+public:
+    // Конструктор
+    RateCollection()
+    {
+        count = 0;
+    }
+
+    // Метод для добавления оценки
+    void addRate(int rate)
+    {
+        if (count < MAX_RATES) {
+            rates[count++] = rate;
+        }
+    }
+
+    // Метод для вывода оценок
+    void printRates() const
+    {
+        for (int i = 0; i < count; ++i) {
+            std::cout << rates[i] << " ";
+        }
+        std::cout << std::endl;
+    }
+};
+
+class Group {
+private:
+    char* name;
+
+public:
+    // Конструктор
+    Group(const char* name)
+    {
+        int name_length = strlen(name);
+        this->name = new char[name_length + 1];
+        strcpy(this->name, name);
+    }
+
+    // Деструктор
+    ~Group()
+    {
+        delete[] name;
+    }
+
+    // Геттер и сеттер
+    const char* getName() const { return name; }
+    void setName(const char* name)
+    {
+        delete[] this->name;
+        int name_length = strlen(name);
+        this->name = new char[name_length + 1];
+        strcpy(this->name, name);
+    }
+};
+
+class Address {
+private:
+    char* country;
+    char* region;
+    char* city;
+    char* street;
+    int houseNumber;
+
+public:
+    // Конструктор
+    Address(const char* country, const char* region, const char* city, const char* street, int houseNumber)
+    {
+        int country_length = strlen(country);
+        this->country = new char[country_length + 1];
+        strcpy(this->country, country);
+
+        int region_length = strlen(region);
+        this->region = new char[region_length + 1];
+        strcpy(this->region, region);
+
+        int city_length = strlen(city);
+        this->city = new char[city_length + 1];
+        strcpy(this->city, city);
+
+        int street_length = strlen(street);
+        this->street = new char[street_length + 1];
+        strcpy(this->street, street);
+
+        this->houseNumber = houseNumber;
+    }
+
+    // Деструктор
+    ~Address()
+    {
+        delete[] country;
+        delete[] region;
+        delete[] city;
+        delete[] street;
+    }
+
+    // Геттеры и сеттеры
+const char* getCountry() const { return country; }
+void setCountry(const char* country)
+{
+delete[] this->country;
+int country_length = strlen(country);
+this->country = new char[country_length + 1];
+strcpy(this->country, country);
+}
+const char* getRegion() const { return region; }
+void setRegion(const char* region)
+{
+    delete[] this->region;
+    int region_length = strlen(region);
+    this->region = new char[region_length + 1];
+    strcpy(this->region, region);
+}
+
+const char* getCity() const { return city; }
+void setCity(const char* city)
+{
+    delete[] this->city;
+    int city_length = strlen(city);
+    this->city = new char[city_length + 1];
+    strcpy(this->city, city);
+}
+
+const char* getStreet() const { return street; }
+void setStreet(const char* street)
+{
+    delete[] this->street;
+    int street_length = strlen(street);
+    this->street = new char[street_length + 1];
+    strcpy(this->street, street);
+}
+
+int getHouseNumber() const { return houseNumber; }
+void setHouseNumber(int houseNumber) { this->houseNumber = houseNumber; }
+
+// Метод для вывода адреса
+void printAddress() const
+{
+    std::cout << "Country: " << country << std::endl;
+    std::cout << "Region: " << region << std::endl;
+    std::cout << "City: " << city << std::endl;
+    std::cout << "Street: " << street << std::endl;
+    std::cout << "House Number: " << houseNumber << std::endl;
+}
+};
+
+int main()
+{
+// Пример использования классов
+// Создаем объекты классов Date, RateCollection, Group, Address
+Date date(11, 4, 2023);
+RateCollection rates;
+Group group("Group1");
+Address address("Country1", "Region1", "City1", "Street1", 123);
+
+// Устанавливаем оценки в RateCollection
+rates.addRate(5);
+rates.addRate(4);
+rates.addRate(3);
+rates.addRate(2);
+rates.addRate(1);
+
+// Выводим данные
+std::cout << "Date: ";
+date.printDate();
+std::cout << std::endl;
+
+std::cout << "Rates: ";
+rates.printRates();
+
+std::cout << "Group: " << group.getName() << std::endl;
+
+std::cout << "Address: " << std::endl;
+address.printAddress();
+
+// Используем сеттеры для изменения данных
+date.setDay(12);
+date.setMonth(4);
+date.setYear(2023);
+
+rates.setRate(0, 10);
+rates.setRate(1, 9);
+
+group.setName("Group2");
+
+address.setCountry("Country2");
+address.setRegion("Region2");
+address.setCity("City2");
+address.setStreet("Street2");
+address.setHouseNumber(456);
+
+// Выводим обновленные данные
+std::cout << "Updated Date: ";
+date.printDate();
+std::cout << std::endl;
+
+std::cout << "Updated Rates: ";
+rates.printRates();
+
+std::cout << "Updated Group: " << group.getName() << std::endl;
+
+std::cout << "Updated Address: " << std::endl;
+address.printAddress();
+
+return 0;
+}
+
+
