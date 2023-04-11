@@ -1,0 +1,81 @@
+class Address
+{
+private:
+    char* country; // страна
+    int country_length;
+    char* region; // область
+    int region_length;
+    char* city; // город
+    int city_length;
+char* street; // улица
+int street_length;
+int house_number; // номер дома
+
+public:
+Address() : country(nullptr), country_length(0), region(nullptr), region_length(0),
+city(nullptr), city_length(0), street(nullptr), street_length(0), house_number(0) {}
+Address(const char* country, const char* region, const char* city, const char* street, int house_number)
+    : country_length(strlen(country)), region_length(strlen(region)), city_length(strlen(city)),
+      street_length(strlen(street)), house_number(house_number)
+{
+    this->country = new char[country_length + 1];
+    strcpy(this->country, country);
+
+    this->region = new char[region_length + 1];
+    strcpy(this->region, region);
+
+    this->city = new char[city_length + 1];
+    strcpy(this->city, city);
+
+    this->street = new char[street_length + 1];
+    strcpy(this->street, street);
+}
+
+~Address()
+{
+    delete[] country;
+    delete[] region;
+    delete[] city;
+    delete[] street;
+}
+
+// Геттеры и сеттеры
+const char* getCountry() const { return country; }
+void setCountry(const char* country)
+{
+    delete[] this->country;
+    country_length = strlen(country);
+    this->country = new char[country_length + 1];
+    strcpy(this->country, country);
+}
+
+const char* getRegion() const { return region; }
+void setRegion(const char* region)
+{
+    delete[] this->region;
+    region_length = strlen(region);
+    this->region = new char[region_length + 1];
+    strcpy(this->region, region);
+}
+
+const char* getCity() const { return city; }
+void setCity(const char* city)
+{
+    delete[] this->city;
+    city_length = strlen(city);
+    this->city = new char[city_length + 1];
+    strcpy(this->city, city);
+}
+
+const char* getStreet() const { return street; }
+void setStreet(const char* street)
+{
+    delete[] this->street;
+    street_length = strlen(street);
+    this->street = new char[street_length + 1];
+    strcpy(this->street, street);
+}
+
+int getHouseNumber() const { return house_number; }
+void setHouseNumber(int house_number) { this->house_number = house_number; }
+};
