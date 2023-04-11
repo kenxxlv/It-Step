@@ -1,0 +1,77 @@
+class Student
+{
+private:
+char* name; // имя
+int name_length;
+Date birthdate; // дата рождения
+RateCollection rates; // оценки
+Group group; // группа
+Address address; // адрес
+
+public:
+Student() : name(nullptr), name_length(0), birthdate(0, 0, 0), rates(), group(), address() {}
+Student(const char* name, int day, int month, int year, int rates_count, const char* group_name,
+const char* country, const char* region, const char* city, const char* street, int house_number)
+: name_length(strlen(name)), birthdate(day, month, year), rates(rates_count), group(group_name),
+address(country, region, city, street, house_number)
+{
+this->name = new char[name_length + 1];
+strcpy(this->name, name);
+}
+~Student()
+{
+    delete[] name;
+}
+
+// Геттерыи и сеттеры
+const char* getName() const { return name; }
+void setName(const char* name)
+{
+    delete[] this->name;
+    name_length = strlen(name);
+    this->name = new char[name_length + 1];
+    strcpy(this->name, name);
+}
+
+const Date& getBirthdate() const { return birthdate; }
+void setBirthdate(int day, int month, int year)
+{
+    birthdate.setDay(day);
+    birthdate.setMonth(month);
+    birthdate.setYear(year);
+}
+
+RateCollection& getRates() { return rates; }
+
+const Group& getGroup() const { return group; }
+void setGroup(const char* group_name)
+{
+    group.setName(group_name);
+}
+
+Address& getAddress() { return address; }
+
+// Метод для добавления оценки
+void addRate(int rate)
+{
+    rates.addRate(rate);
+}
+
+// Метод для вывода информации о студенте
+void printInfo() const
+{
+    std::cout << "Имя: " << name << std::endl;
+    std::cout << "Дата рождения: ";
+    birthdate.printDate();
+    std::cout << std::endl;
+    std::cout << "Группа: " << group.getName() << std::endl;
+    std::cout << "Адрес: " << std::endl;
+    std::cout << "  Страна: " << address.getCountry() << std::endl;
+    std::cout << "  Регион: " << address.getRegion() << std::endl;
+    std::cout << "  Город: " << address.getCity() << std::endl;
+    std::cout << "  Улица: " << address.getStreet() << std::endl;
+    std::cout << "  Номер дома: " << address.getHouseNumber() << std::endl;
+    std::cout << "Оценки: ";
+    rates.printRates();
+}
+};
