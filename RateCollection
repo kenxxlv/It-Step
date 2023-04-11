@@ -1,32 +1,54 @@
-class RateCollection {
+class RateCollection
+{
 private:
-  int* rates; // указатель на массив оценок
-  int count; // количество оценок
+    int* rates; // массив оценок
+    int count; // количество оценок
 
 public:
-  RateCollection() : rates(nullptr), count(0) {}
+    RateCollection() : rates(nullptr), count(0) {}
+    RateCollection(int count) : count(count)
+    {
+        rates = new int[count];
+        for (int i = 0; i < count; ++i)
+        {
+            rates[i] = 0;
+        }
+    }
+    ~RateCollection() { delete[] rates; }
 
-  // Геттеры
-  int* getRates() const { return rates; }
-  int getCount() const { return count; }
+    // Геттеры и сеттеры
+    int* getRates() const { return rates; }
+    void setRates(int* rates) { this->rates = rates; }
 
-  // Сеттеры
-  void setRates(int* rates) { this->rates = rates; }
-  void setCount(int count) { this->count = count; }
+    int getCount() const { return count; }
+    void setCount(int count) { this->count = count; }
 
-  // Методы для работы с оценками
-  void addRate(int value) {
-    // Добавление оценки в коллекцию
-    // Реализация опущена для краткости
-  }
+    // Методы
+    void AddRate(int value, int index)
+    {
+        if (index >= 0 && index < count)
+        {
+            rates[index] = value;
+        }
+    }
 
-  void changeRate(int index, int value) {
-    // Редактирование оценки по индексу
-    // Реализация опущена для краткости
-  }
+    void ChangeRate(int value, int index)
+    {
+        if (index >= 0 && index < count)
+        {
+            rates[index] = value;
+        }
+    }
 
-  void deleteRate(int index) {
-    // Удаление оценки по индексу
-    // Реализация опущена для краткости
-  }
+    void DeleteRate(int index)
+    {
+        if (index >= 0 && index < count)
+        {
+            for (int i = index; i < count - 1; ++i)
+            {
+                rates[i] = rates[i + 1];
+            }
+            count--;
+        }
+    }
 };
