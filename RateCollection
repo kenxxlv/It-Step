@@ -1,0 +1,32 @@
+class RateCollection {
+private:
+  int* rates; // указатель на массив оценок
+  int count; // количество оценок
+
+public:
+  RateCollection() : rates(nullptr), count(0) {}
+
+  // Геттеры
+  int* getRates() const { return rates; }
+  int getCount() const { return count; }
+
+  // Сеттеры
+  void setRates(int* rates) { this->rates = rates; }
+  void setCount(int count) { this->count = count; }
+
+  // Методы для работы с оценками
+  void addRate(int value) {
+    // Добавление оценки в коллекцию
+    // Реализация опущена для краткости
+  }
+
+  void changeRate(int index, int value) {
+    // Редактирование оценки по индексу
+    // Реализация опущена для краткости
+  }
+
+  void deleteRate(int index) {
+    // Удаление оценки по индексу
+    // Реализация опущена для краткости
+  }
+};
