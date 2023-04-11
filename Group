@@ -1,0 +1,25 @@
+class Group
+{
+private:
+    char* group_name; // название группы
+    int group_name_length;
+
+public:
+    Group() : group_name(nullptr), group_name_length(0) {}
+    Group(const char* group_name) : group_name_length(strlen(group_name))
+    {
+        this->group_name = new char[group_name_length + 1];
+        strcpy(this->group_name, group_name);
+    }
+    ~Group() { delete[] group_name; }
+
+    // Геттеры и сеттеры
+    const char* getGroupName() const { return group_name; }
+    void setGroupName(const char* group_name)
+    {
+        delete[] this->group_name;
+        group_name_length = strlen(group_name);
+        this->group_name = new char[group_name_length + 1];
+        strcpy(this->group_name, group_name);
+    }
+};
