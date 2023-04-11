@@ -1,0 +1,27 @@
+int main()
+{
+// Пример использования классов
+// Создание объекта адреса
+Address address1("Ukraine", "Odesa", "Odesa", "Sadova", 3);
+
+// Создание объекта даты
+Date birthdate1(15, 12, 1998);
+
+// Создание объекта группы
+Group group1("Group A");
+
+// Создание объекта студента
+Student student1("John Smith", 15, 12, 1998, 5, "Group A", "Ukraine", "Odesa", "Odesa", "Sadova", 3);
+
+// Добавление оценок
+student1.addRate(5);
+student1.addRate(4);
+student1.addRate(3);
+student1.addRate(5);
+student1.addRate(4);
+
+// Вывод информации о студенте
+student1.printInfo();
+
+return 0;
+}
