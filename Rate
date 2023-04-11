@@ -1,13 +1,12 @@
-class Rate {
+class Rate
+{
 private:
-  int value; // значение оценки
+    int value; // значение оценки
 
 public:
-  Rate(int value) : value(value) {}
+    Rate(int value) : value(value) {}
 
-  // Геттер
-  int getValue() const { return value; }
-
-  // Сеттер
-  void setValue(int value) { this->value = value; }
+    // Геттеры и сеттеры
+    int getValue() const { return value; }
+    void setValue(int value) { this->value = value; }
 };
