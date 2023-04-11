@@ -1,19 +1,20 @@
-class Date {
+class Date
+{
 private:
-  int day; // день
-  int month; // месяц
-  int year; // год
+    int day; // день
+    int month; // месяц
+    int year; // год
 
 public:
-  Date(int day, int month, int year) : day(day), month(month), year(year) {}
+    Date(int day, int month, int year) : day(day), month(month), year(year) {}
 
-  // Геттеры
-  int getDay() const { return day; }
-  int getMonth() const { return month; }
-  int getYear() const { return year; }
+    // Геттеры и сеттеры
+    int getDay() const { return day; }
+    void setDay(int day) { this->day = day; }
 
-  // Сеттеры
-  void setDay(int day) { this->day = day; }
-  void setMonth(int month) { this->month = month; }
-  void setYear(int year) { this->year = year; }
+    int getMonth() const { return month; }
+    void setMonth(int month) { this->month = month; }
+
+    int getYear() const { return year; }
+    void setYear(int year) { this->year = year; }
 };
